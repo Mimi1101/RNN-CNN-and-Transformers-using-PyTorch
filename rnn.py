@@ -16,6 +16,10 @@ from torchviz import make_dot
 
 
 class VanillaRNNLanguage(nn.Module):
+    """
+    A vanilla RNN-based language model for next-token prediction.
+    """
+
     def __init__(self, embedding_dim=256, hidden_dim=512, vocab_size=10000):
        super(VanillaRNNLanguage, self).__init__()
        self.embedding = nn.Embedding(vocab_size, embedding_dim)
@@ -305,7 +309,6 @@ def draw_architect():
     logits, _ = model(input_ids)
     make_dot(logits, params=dict(model.named_parameters())).render("vanilla_rnn_architecture", format="png")
     print("Architect done")
-
 
 
 if __name__ == "__main__":

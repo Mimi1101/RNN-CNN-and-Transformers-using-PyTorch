@@ -12,6 +12,9 @@ from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 
 
 class LSTM(nn.Module):
+    """
+    A LSTM language model for next token prediction.
+    """
     def __init__(self, embedding_dim=256, hidden_dim=512, vocab_size=10000, num_layers=2, dropout=0.2):
         super(LSTM, self).__init__()
         self.embedding = nn.Embedding(vocab_size, embedding_dim)

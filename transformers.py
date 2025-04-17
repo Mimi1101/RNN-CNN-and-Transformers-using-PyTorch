@@ -14,8 +14,6 @@ import sentencepiece as spm
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 
 
-
-
 class PositionalEncoding(nn.Module):
     def __init__(self, d_model, max_len=512, dropout=0.2):
         super().__init__()
@@ -36,6 +34,9 @@ class PositionalEncoding(nn.Module):
         return self.dropout(x)
     
 class TransformersLanguageModel(nn.Module):
+    """
+    A Transformer-based language model for autoregressive text generation.
+    """
     def __init__(self, vocab_size=10000, d_model = 512, nhead=8, num_layers=4, dim_feedforward=1024, dropout=0.2, max_len=512):
         super(TransformersLanguageModel, self).__init__()
         self.embedding = nn.Embedding(vocab_size, d_model)

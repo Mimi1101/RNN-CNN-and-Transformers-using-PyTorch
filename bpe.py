@@ -45,9 +45,9 @@ class bpetokenizer:
 
 if __name__ == "__main__":
     lala = bpetokenizer
-    # #training the bpe model
+    #training the bpe model
     lala.train_BPE()
-    # # #tokenizing train and test
+    #tokenizing train and test
     lala.tokenize_data("./data/test.jsonl", "train.pt")
     lala.tokenize_data("./data/test.jsonl", "test.pt")
    
