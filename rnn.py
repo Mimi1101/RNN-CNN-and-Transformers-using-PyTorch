@@ -10,6 +10,7 @@ import math
 import sentencepiece as spm
 import json
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
+from torchviz import make_dot
 
 
 
@@ -29,7 +30,7 @@ class VanillaRNNLanguage(nn.Module):
         logits = self.fc(output)
         return logits, hidden
     
-    def predict_next_token(self, input_ids, hidden=None, temperature=1.0, top_p =0.9):
+    def predict_next_token(self, input_ids, hidden=None, temperature=0.8, top_p =0.9):
         self.eval()
         with torch.no_grad():
             logits, hidden = self.forward(input_ids, hidden)
@@ -48,8 +49,7 @@ class VanillaRNNLanguage(nn.Module):
                 cutoff_index = torch.min(torch.where(cutoff)[1]) + 1
             else:
                 cutoff_index = sorted_probs.shape[-1]
-            print(f"Sampling from top {cutoff_index} tokens (cumulative prob ≥ {top_p})")
-            
+
 
             # Slice to get the nucleus set
             filtered_probs = sorted_probs[:, :cutoff_index]
@@ -63,7 +63,7 @@ class VanillaRNNLanguage(nn.Module):
             
             return next_token_id.item(), hidden
         
-    def generate(self, tokenizer, prompt, max_length=50, eos_token_id=2, temperature=1.0, device='cuda', top_p = 0.9):
+    def generate(self, tokenizer, prompt, max_length=50,  temperature=0.8, device='cuda', top_p = 0.9):
         self.eval()
         #encoding the prompt
         input_ids = tokenizer.encode(prompt, out_type=int)
@@ -73,8 +73,6 @@ class VanillaRNNLanguage(nn.Module):
 
         for _ in range(max_length):
             next_token_id, hidden = self.predict_next_token(input_tensor, hidden, temperature, top_p = top_p)
-            if eos_token_id is not None and next_token_id == eos_token_id:
-                break
 
             generated_ids.append(next_token_id)
             #generated token as input for the next step
@@ -199,7 +197,7 @@ def perplexity(model, test_loader, criterion, device='cuda'):
     print(f"Test Loss: {avg_loss:.4f} | Perplexity: {perplexity:.2f}")
     return avg_loss, perplexity
 
-def load_tokenizer(model_path='bpe_tokenizer.model'):
+def load_tokenizer(model_path='./modelsptfiles/bpe_tokenizer.model'):
     sp = spm.SentencePieceProcessor()
     sp.load(model_path)
     return sp
@@ -239,12 +237,6 @@ def bleu(model, tokenizer, testdata, device='cuda', max_samples=100):
             )
             scores.append(score)
 
-            if i < 5:
-                print("Printing first 5 bleu scores.")
-                print(f"\nPrompt: {prompt}")
-                print(f"Correct: {reference}")
-                print(f"Generated: {generated}")
-                print(f"BLEU Score: {score:.4f}")
 
     avg_bleu = sum(scores) / len(scores)
     print(f"Average bleu score on {len(scores)} samples: {avg_bleu:.4f}")
@@ -269,7 +261,7 @@ def train_main():
     print("Starting main loop", flush=True)
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     print("Loading dataset", flush=True)
-    dataset = TokenizedDataset("train_tokenized.pt")
+    dataset = TokenizedDataset("./modelsptfiles/train.pt")
     # Split the dataset into 80% training and 20% validation.
     train_size = int(0.8 * len(dataset))
     test_size = len(dataset) - train_size
@@ -287,10 +279,10 @@ def test_main():
     print("Starting main loop", flush=True)
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     print("Loading test dataset")
-    test_dataset = TokenizedDataset("test_tokenized.pt")
+    test_dataset = TokenizedDataset("./modelsptfiles/test.pt")
     test_loader = DataLoader(test_dataset, batch_size=128, shuffle=False, collate_fn=collate_fn)
     model = VanillaRNNLanguage()
-    model.load_state_dict(torch.load("vanilla_rnn.pt", map_location=device))
+    model.load_state_dict(torch.load("./modelsptfiles/vanilla_rnn.pt", map_location=device))
     criterion = nn.CrossEntropyLoss(ignore_index=3)
 
     #calculate perplexity
@@ -300,16 +292,25 @@ def test_main():
     tokenizer = load_tokenizer()
     generate_from_prompt(model, tokenizer, "Which do you prefer? Dogs or cats?", device=device)
     generate_from_prompt(model, tokenizer, "Messi is the goat, wouldn't you agree?", device=device)
+    generate_from_prompt(model, tokenizer, "She was a fairy and", device=device)
     
     #bleu
     print("\nEvaluating BLEU score...")
-    bleu(model, tokenizer, "test_final.jsonl", device=device, max_samples=100)
+    bleu(model, tokenizer, "./data/test.jsonl", device=device, max_samples=100)
+
+def draw_architect():
+    model = VanillaRNNLanguage()
+    #dummy input
+    input_ids = torch.randint(0, 10000, (1, 10))
+    logits, _ = model(input_ids)
+    make_dot(logits, params=dict(model.named_parameters())).render("vanilla_rnn_architecture", format="png")
+    print("Architect done")
 
 
 
 if __name__ == "__main__":
     print("Checking if we got in")
-    test_main() 
+    test_main()
 
 
 

@@ -1,0 +1,83 @@
+(/scratch/bbaral3/venv) [bbaral3@qbd1 bbaral3]$ cat lstmoutput.log
+Checking if we got in
+Starting LSTM training main loop
+LSTM Training setup done
+Starting the LSTM training loop
+Epoch 1/24: 100%|██████████| 248/248 [00:20<00:00, 12.38it/s]
+Epoch 1/24 - Training Loss: 6.8465 | Validation Loss: 6.3448
+Epoch 2/24: 100%|██████████| 248/248 [00:17<00:00, 14.45it/s]
+Epoch 2/24 - Training Loss: 6.0605 | Validation Loss: 5.7823
+Epoch 3/24: 100%|██████████| 248/248 [00:17<00:00, 14.33it/s]
+Epoch 3/24 - Training Loss: 5.7013 | Validation Loss: 5.5457
+Epoch 4/24: 100%|██████████| 248/248 [00:17<00:00, 14.25it/s]
+Epoch 4/24 - Training Loss: 5.5074 | Validation Loss: 5.3967
+Epoch 5/24: 100%|██████████| 248/248 [00:17<00:00, 14.26it/s]
+Epoch 5/24 - Training Loss: 5.3675 | Validation Loss: 5.2782
+Epoch 6/24: 100%|██████████| 248/248 [00:17<00:00, 14.23it/s]
+Epoch 6/24 - Training Loss: 5.2451 | Validation Loss: 5.1683
+Epoch 7/24: 100%|██████████| 248/248 [00:17<00:00, 14.26it/s]
+Epoch 7/24 - Training Loss: 5.1368 | Validation Loss: 5.0810
+Epoch 8/24: 100%|██████████| 248/248 [00:17<00:00, 14.21it/s]
+Epoch 8/24 - Training Loss: 5.0451 | Validation Loss: 5.0045
+Epoch 9/24: 100%|██████████| 248/248 [00:17<00:00, 14.26it/s]
+Epoch 9/24 - Training Loss: 4.9631 | Validation Loss: 4.9433
+Epoch 10/24: 100%|██████████| 248/248 [00:17<00:00, 14.17it/s]
+Epoch 10/24 - Training Loss: 4.8893 | Validation Loss: 4.8829
+Epoch 11/24: 100%|██████████| 248/248 [00:17<00:00, 14.23it/s]
+Epoch 11/24 - Training Loss: 4.8201 | Validation Loss: 4.8302
+Epoch 12/24: 100%|██████████| 248/248 [00:17<00:00, 14.22it/s]
+Epoch 12/24 - Training Loss: 4.7576 | Validation Loss: 4.7879
+Epoch 13/24: 100%|██████████| 248/248 [00:17<00:00, 14.24it/s]
+Epoch 13/24 - Training Loss: 4.6998 | Validation Loss: 4.7466
+Epoch 14/24: 100%|██████████| 248/248 [00:17<00:00, 14.26it/s]
+Epoch 14/24 - Training Loss: 4.6456 | Validation Loss: 4.7147
+Epoch 15/24: 100%|██████████| 248/248 [00:17<00:00, 14.22it/s]
+Epoch 15/24 - Training Loss: 4.5978 | Validation Loss: 4.6832
+Epoch 16/24: 100%|██████████| 248/248 [00:17<00:00, 14.25it/s]
+Epoch 16/24 - Training Loss: 4.5519 | Validation Loss: 4.6574
+Epoch 17/24: 100%|██████████| 248/248 [00:17<00:00, 14.33it/s]
+Epoch 17/24 - Training Loss: 4.5106 | Validation Loss: 4.6367
+Epoch 18/24: 100%|██████████| 248/248 [00:17<00:00, 14.30it/s]
+Epoch 18/24 - Training Loss: 4.4707 | Validation Loss: 4.6162
+Epoch 19/24: 100%|██████████| 248/248 [00:17<00:00, 14.35it/s]
+Epoch 19/24 - Training Loss: 4.4346 | Validation Loss: 4.5971
+Epoch 20/24: 100%|██████████| 248/248 [00:17<00:00, 14.29it/s]
+Epoch 20/24 - Training Loss: 4.4002 | Validation Loss: 4.5834
+Epoch 21/24: 100%|██████████| 248/248 [00:17<00:00, 14.26it/s]
+Epoch 21/24 - Training Loss: 4.3673 | Validation Loss: 4.5711
+Epoch 22/24: 100%|██████████| 248/248 [00:17<00:00, 14.32it/s]
+Epoch 22/24 - Training Loss: 4.3363 | Validation Loss: 4.5625
+Epoch 23/24: 100%|██████████| 248/248 [00:17<00:00, 14.20it/s]
+Epoch 23/24 - Training Loss: 4.3080 | Validation Loss: 4.5508
+Epoch 24/24: 100%|██████████| 248/248 [00:17<00:00, 14.25it/s]
+Epoch 24/24 - Training Loss: 4.2807 | Validation Loss: 4.5449
+LSTM model saved
+
+
+(/scratch/bbaral3/venv) [bbaral3@qbd1 bbaral3]$ cat lstmoutput.log
+Checking if we got in
+Testing LSTM model on prompt generation
+
+Prompt: Which do you prefer? Dogs or cats?
+Generated: The suitors did not say to him that it was the matter, and the monster would be, he said, and he now waited to the cap, for he had come out of a gale, and I was too much afraid of it. He was
+
+
+Prompt: Messi is the goat, wouldn't you agree?
+Generated: The young man. How was you? inquired the gardener. Yes, I did not know what we were saying. I would not understand why I had done it. I have to do what I did not. But the evil is the matter with me
+
+
+Prompt: She was a fairy and
+Generated: I lost, nor did that escape. It was a rule of light upon the cold. The farther north, the sun, the whale, the circular neck of the stars, which I had seen, but I saw the wind, but through the
+
+
+Evaluating Perplexity...
+Test Loss: 4.5427 | Perplexity: 93.94
+
+Evaluating BLEU score...
+
+Prompt: by matter; for certain ugly features have a cause in the very depths of eternal beauty. There was an unknown quantity about Thnardier; hence the absolute empire of the man over that woman. At certain moments she beheld him like a lighted candle; at others she felt him like a claw. This woman was a formidable creature who loved no one except her children, and who did not fear any one except her husband. She was a mother because she was mammiferous. But her maternity stopped short with her daughters, and, as we shall see, did not extend to boys. The man had but one thought,how to enrich himself. He did not succeed in this. A theatre worthy of this great talent was lacking. Thnardier
+Correct: was
+Generated: was not in the habit of hearing a short time and the whole party on the left. The crowd of Valentine had never seen him. He was then convinced to that words of which it was necessary, it was not a little, but it would be
+BLEU Score: 0.0070
+
+Average bleu score on 100 samples: 0.0023

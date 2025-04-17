@@ -5,20 +5,6 @@ import torch
 
 class bpetokenizer:
 
-  
-    def add_special_tokens_to_jsonl(input_path, output_path):
-        with open(input_path, 'r') as infile, open(output_path, 'w') as outfile:
-            for line in infile:
-                data = json.loads(line)
-                prompt = data["prompt"]
-                completion = data["completion"]
-                if not prompt.strip().startswith("<bos>"):
-                    prompt = "<bos> " + prompt.strip()
-                if not completion.strip().endswith("<eos>"):
-                    completion = completion.strip() + " <eos>"
-
-                json.dump({"prompt": prompt, "completion": completion}, outfile)
-                outfile.write('\n')
 
     def train_BPE():
         spm.SentencePieceTrainer.train(
@@ -48,8 +34,6 @@ class bpetokenizer:
                     combined = f"{prompt} {completion}"
                     token_ids = sp.encode(combined, out_type=int)
 
-                    # adding bos and eos
-                    token_ids = [1] + token_ids + [2]
 
                     tokenized_sequences.append(torch.tensor(token_ids, dtype=torch.long))
 
@@ -61,14 +45,14 @@ class bpetokenizer:
 
 if __name__ == "__main__":
     lala = bpetokenizer
-    #training the bpe model
-    # lala.train_BPE()
-    # #tokenizing train and test
-    # Preprocess special tokens
-    lala.add_special_tokens_to_jsonl("train.jsonl", "train_final.jsonl")
-    lala.add_special_tokens_to_jsonl("test.jsonl", "test_final.jsonl")
-    lala.tokenize_data("train_final.jsonl", "train_tokenized.pt")
-    lala.tokenize_data("test_final.jsonl", "test_tokenized.pt")
+    # #training the bpe model
+    lala.train_BPE()
+    # # #tokenizing train and test
+    lala.tokenize_data("./data/test.jsonl", "train.pt")
+    lala.tokenize_data("./data/test.jsonl", "test.pt")
+   
+
+
 
 
 

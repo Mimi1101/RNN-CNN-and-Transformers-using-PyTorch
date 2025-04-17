@@ -1,0 +1,78 @@
+
+Epoch 1/24: 100%|██████████| 990/990 [00:41<00:00, 23.76it/s]
+Epoch 1/24 - Training Loss: 5.8014 | Validation Loss: 5.2598
+Epoch 2/24: 100%|██████████| 990/990 [00:39<00:00, 25.18it/s]
+Epoch 2/24 - Training Loss: 5.1510 | Validation Loss: 4.9924
+Epoch 3/24: 100%|██████████| 990/990 [00:39<00:00, 25.06it/s]
+Epoch 3/24 - Training Loss: 4.9253 | Validation Loss: 4.8552
+Epoch 4/24: 100%|██████████| 990/990 [00:39<00:00, 25.01it/s]
+Epoch 4/24 - Training Loss: 4.7895 | Validation Loss: 4.7780
+Epoch 5/24: 100%|██████████| 990/990 [00:39<00:00, 24.95it/s]
+Epoch 5/24 - Training Loss: 4.6893 | Validation Loss: 4.7367
+Epoch 6/24: 100%|██████████| 990/990 [00:39<00:00, 24.92it/s]
+Epoch 6/24 - Training Loss: 4.6154 | Validation Loss: 4.6814
+Epoch 7/24: 100%|██████████| 990/990 [00:39<00:00, 24.93it/s]
+Epoch 7/24 - Training Loss: 4.5548 | Validation Loss: 4.6617
+Epoch 8/24: 100%|██████████| 990/990 [00:39<00:00, 24.92it/s]
+Epoch 8/24 - Training Loss: 4.5011 | Validation Loss: 4.6369
+Epoch 9/24: 100%|██████████| 990/990 [00:39<00:00, 24.91it/s]
+Epoch 9/24 - Training Loss: 4.4592 | Validation Loss: 4.6223
+Epoch 10/24: 100%|██████████| 990/990 [00:39<00:00, 24.76it/s]
+Epoch 10/24 - Training Loss: 4.4182 | Validation Loss: 4.6011
+Epoch 11/24: 100%|██████████| 990/990 [00:39<00:00, 24.84it/s]
+Epoch 11/24 - Training Loss: 4.3820 | Validation Loss: 4.5923
+Epoch 12/24: 100%|██████████| 990/990 [00:39<00:00, 24.88it/s]
+Epoch 12/24 - Training Loss: 4.3517 | Validation Loss: 4.5842
+Epoch 13/24: 100%|██████████| 990/990 [00:39<00:00, 24.91it/s]
+Epoch 13/24 - Training Loss: 4.3234 | Validation Loss: 4.5809
+Epoch 14/24: 100%|██████████| 990/990 [00:39<00:00, 24.83it/s]
+Epoch 14/24 - Training Loss: 4.2999 | Validation Loss: 4.5685
+Epoch 15/24: 100%|██████████| 990/990 [00:40<00:00, 24.29it/s]
+Epoch 15/24 - Training Loss: 4.2766 | Validation Loss: 4.5703
+Epoch 16/24: 100%|██████████| 990/990 [00:39<00:00, 24.89it/s]
+Epoch 16/24 - Training Loss: 4.2550 | Validation Loss: 4.5669
+Epoch 17/24: 100%|██████████| 990/990 [00:39<00:00, 24.93it/s]
+Epoch 17/24 - Training Loss: 4.2345 | Validation Loss: 4.5661
+Epoch 18/24: 100%|██████████| 990/990 [00:39<00:00, 24.95it/s]
+Epoch 18/24 - Training Loss: 4.2135 | Validation Loss: 4.5522
+Epoch 19/24: 100%|██████████| 990/990 [00:39<00:00, 24.97it/s]
+Epoch 19/24 - Training Loss: 4.1943 | Validation Loss: 4.5549
+Epoch 20/24: 100%|██████████| 990/990 [00:39<00:00, 24.89it/s]
+Epoch 20/24 - Training Loss: 4.1777 | Validation Loss: 4.5561
+Epoch 21/24: 100%|██████████| 990/990 [00:39<00:00, 24.93it/s]
+Epoch 21/24 - Training Loss: 4.0614 | Validation Loss: 4.5233
+Epoch 22/24: 100%|██████████| 990/990 [00:39<00:00, 24.90it/s]
+Epoch 22/24 - Training Loss: 4.0227 | Validation Loss: 4.5235
+Epoch 23/24: 100%|██████████| 990/990 [00:39<00:00, 24.95it/s]
+Epoch 23/24 - Training Loss: 3.9986 | Validation Loss: 4.5297
+Epoch 24/24: 100%|██████████| 990/990 [00:39<00:00, 24.88it/s]
+Epoch 24/24 - Training Loss: 3.9275 | Validation Loss: 4.5223
+Transformer model saved
+
+
+Perplexity
+Test Loss: 4.5095 | Perplexity: 90.88
+
+Sample Generations
+
+Prompt: Which do you prefer? Dogs or cats?
+Generated: Yes. But where are you going? What do you mean? Then, I said, what? And so I said, I told you about the door and opened the door again. Then he was gone out, and the door opened, as he
+
+
+Prompt: Messi is the goat, wouldn't you agree?
+Generated: Yes. And then, I said, if you will be surprised at the same time. And what is there a limit to the same, or at the same time, as the same time the same time? Yes. And I said. And if
+
+
+Prompt: She was a fairy and
+Generated: was fond of everything, and the her face was very glad and terrible. She loved him, but she was not surprised to see him, but she did not know whether it was not. Her face was an angry look was fixed on the effect that
+
+
+ BLEU Score
+
+Prompt: by matter; for certain ugly features have a cause in the very depths of eternal beauty. There was an unknown quantity about Thnardier; hence the absolute empire of the man over that woman. At certain moments she beheld him like a lighted candle; at others she felt him like a claw. This woman was a formidable creature who loved no one except her children, and who did not fear any one except her husband. She was a mother because she was mammiferous. But her maternity stopped short with her daughters, and, as we shall see, did not extend to boys. The man had but one thought,how to enrich himself. He did not succeed in this. A theatre worthy of this great talent was lacking. Thnardier
+Reference: was
+Generated: , who was the mother. Cosette said to her husband: There is no one nor pretty little Cosette, in her fathers wish to live with this melancholy gravity. It was useless to be an elderly creature who was a child. She was the man
+BLEU Score: 0.0073
+
+Average BLEU score on 100 samples: 0.0023
+(/scratch/bbaral3/venv) [bbaral3@qbd1 bbaral3]$

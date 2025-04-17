@@ -1,0 +1,76 @@
+Checking if we got in
+Starting main loop
+Loading dataset
+Training setup done
+Starting the training loop
+Epoch 1/24: 100%|██████████| 248/248 [00:18<00:00, 13.08it/s]
+Epoch 1/24 - Training Loss: 6.2040 | Validation Loss: 5.5834
+Epoch 2/24: 100%|██████████| 248/248 [00:15<00:00, 16.17it/s]
+Epoch 2/24 - Training Loss: 5.4151 | Validation Loss: 5.2123
+Epoch 3/24: 100%|██████████| 248/248 [00:15<00:00, 16.20it/s]
+Epoch 3/24 - Training Loss: 5.1211 | Validation Loss: 5.0157
+Epoch 4/24: 100%|██████████| 248/248 [00:15<00:00, 16.20it/s]
+Epoch 4/24 - Training Loss: 4.9458 | Validation Loss: 4.9134
+Epoch 5/24: 100%|██████████| 248/248 [00:15<00:00, 16.10it/s]
+Epoch 5/24 - Training Loss: 4.8307 | Validation Loss: 4.8360
+Epoch 6/24: 100%|██████████| 248/248 [00:15<00:00, 16.08it/s]
+Epoch 6/24 - Training Loss: 4.7414 | Validation Loss: 4.7868
+Epoch 7/24: 100%|██████████| 248/248 [00:15<00:00, 16.08it/s]
+Epoch 7/24 - Training Loss: 4.6743 | Validation Loss: 4.7490
+Epoch 8/24: 100%|██████████| 248/248 [00:15<00:00, 16.00it/s]
+Epoch 8/24 - Training Loss: 4.6178 | Validation Loss: 4.7242
+Epoch 9/24: 100%|██████████| 248/248 [00:15<00:00, 15.96it/s]
+Epoch 9/24 - Training Loss: 4.5732 | Validation Loss: 4.7080
+Epoch 10/24: 100%|██████████| 248/248 [00:15<00:00, 15.97it/s]
+Epoch 10/24 - Training Loss: 4.5305 | Validation Loss: 4.6947
+Epoch 11/24: 100%|██████████| 248/248 [00:15<00:00, 16.01it/s]
+Epoch 11/24 - Training Loss: 4.5013 | Validation Loss: 4.6853
+Epoch 12/24: 100%|██████████| 248/248 [00:15<00:00, 15.98it/s]
+Epoch 12/24 - Training Loss: 4.4762 | Validation Loss: 4.6751
+Epoch 13/24: 100%|██████████| 248/248 [00:15<00:00, 16.04it/s]
+Epoch 13/24 - Training Loss: 4.4432 | Validation Loss: 4.6668
+Epoch 14/24: 100%|██████████| 248/248 [00:15<00:00, 16.03it/s]
+Epoch 14/24 - Training Loss: 4.4187 | Validation Loss: 4.6650
+Epoch 15/24: 100%|██████████| 248/248 [00:15<00:00, 16.03it/s]
+Epoch 15/24 - Training Loss: 4.4147 | Validation Loss: 4.6844
+Epoch 16/24: 100%|██████████| 248/248 [00:15<00:00, 16.01it/s]
+Epoch 16/24 - Training Loss: 4.3982 | Validation Loss: 4.6577
+Epoch 17/24: 100%|██████████| 248/248 [00:15<00:00, 16.07it/s]
+Epoch 17/24 - Training Loss: 4.3599 | Validation Loss: 4.6546
+Epoch 18/24: 100%|██████████| 248/248 [00:15<00:00, 16.07it/s]
+Epoch 18/24 - Training Loss: 4.3393 | Validation Loss: 4.6496
+Epoch 19/24: 100%|██████████| 248/248 [00:15<00:00, 16.11it/s]
+Epoch 19/24 - Training Loss: 4.3222 | Validation Loss: 4.6473
+Epoch 20/24: 100%|██████████| 248/248 [00:15<00:00, 16.06it/s]
+Epoch 20/24 - Training Loss: 4.3034 | Validation Loss: 4.6521
+Epoch 21/24: 100%|██████████| 248/248 [00:15<00:00, 16.04it/s]
+Epoch 21/24 - Training Loss: 4.2879 | Validation Loss: 4.6494
+Epoch 22/24: 100%|██████████| 248/248 [00:15<00:00, 16.01it/s]
+Epoch 22/24 - Training Loss: 4.2725 | Validation Loss: 4.6486
+Epoch 23/24: 100%|██████████| 248/248 [00:15<00:00, 16.04it/s]
+Epoch 23/24 - Training Loss: 4.2595 | Validation Loss: 4.6521
+Epoch 24/24: 100%|██████████| 248/248 [00:15<00:00, 16.10it/s]
+Epoch 24/24 - Training Loss: 4.2470 | Validation Loss: 4.6484
+Trained vanilla rnn model saved.
+
+(/scratch/bbaral3/venv) [bbaral3@qbd1 bbaral3]$ cat rnnoutput.log
+Checking if we got in
+Starting main loop
+Loading test dataset
+Test Loss: 4.6462 | Perplexity: 104.19
+
+Prompt: Which do you prefer? Dogs or cats?
+Generated: Yes. Then, said the count, I did not know how to do. And as I told you, he said, as you have in the world; and if you like a great deal of a better than a cannibal. You can
+
+
+Prompt: Messi is the goat, wouldn't you agree?
+Generated: I thought, it is. And then, I have seen my own, I would not have made a mistake. Well, then, then, a long time, I shall be to be happy to find you, we are but those who are the
+
+
+Prompt: She was a fairy and
+Generated: slender woman. When the door was opened. It was not a monster, for any of them did so, as if there were no less and more than sixty hours of the moment, and it was only the moonlight before the journey and the enemy had
+
+
+Evaluating BLEU score...
+Average bleu score on 100 samples: 0.0022
+(/scratch/bbaral3/venv) [bbaral3@qbd1 bbaral3]$

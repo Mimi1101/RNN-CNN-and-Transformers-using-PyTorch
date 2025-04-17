@@ -26,7 +26,7 @@ class LSTM(nn.Module):
         logits = self.fc(output)
         return logits, hidden
     
-    def predict_next_token(self, input_ids, hidden=None, temperature=1.0):
+    def predict_next_token(self, input_ids, hidden=None, temperature=0.8, top_p =0.9):
         self.eval()
         with torch.no_grad():
             logits, hidden = self.forward(input_ids, hidden)
@@ -35,10 +35,31 @@ class LSTM(nn.Module):
             #this is where like temeprature would come into effect but mine stays the same because its 1
             logits = logits / temperature
             probs = torch.softmax(logits, dim=-1)
-            next_token_id = torch.argmax(probs, dim=-1)# greedy sampling
+            #sort tokens from highest to lowest probability
+            sorted_probs, sorted_indices = torch.sort(probs, descending=True)
+            #cumulative sum of the sorted probabilities
+            cumulative_probs = torch.cumsum(sorted_probs, dim=-1)
+            #the smallest set where cumulative prob exceeds top_p
+            cutoff = cumulative_probs > top_p
+            if torch.any(cutoff):
+                cutoff_index = torch.min(torch.where(cutoff)[1]) + 1
+            else:
+                cutoff_index = sorted_probs.shape[-1]
+           
+
+            # Slice to get the nucleus set
+            filtered_probs = sorted_probs[:, :cutoff_index]
+            filtered_indices = sorted_indices[:, :cutoff_index]
+
+            # Re-normalize
+            filtered_probs = filtered_probs / torch.sum(filtered_probs, dim=-1, keepdim=True)
+
+            sampled_token_idx = torch.multinomial(filtered_probs, num_samples=1)
+            next_token_id = filtered_indices[0, sampled_token_idx]
+            
             return next_token_id.item(), hidden
         
-    def generate(self, tokenizer, prompt, max_length=50, eos_token_id=2, temperature=1.0, device='cuda'):
+    def generate(self, tokenizer, prompt, max_length=50,  temperature=0.8, device='cuda', top_p = 0.9):
         self.eval()
         #encoding the prompt
         input_ids = tokenizer.encode(prompt, out_type=int)
@@ -47,9 +68,7 @@ class LSTM(nn.Module):
         hidden = None
 
         for _ in range(max_length):
-            next_token_id, hidden = self.predict_next_token(input_tensor, hidden, temperature)
-            if eos_token_id is not None and next_token_id == eos_token_id:
-                break
+            next_token_id, hidden = self.predict_next_token(input_tensor, hidden, temperature, top_p = top_p)
 
             generated_ids.append(next_token_id)
             #generated token as input for the next step
@@ -57,6 +76,7 @@ class LSTM(nn.Module):
 
         return tokenizer.decode(generated_ids, out_type=str)
     
+
 #to handle sequences and load the .pt files 
 class TokenizedDataset(Dataset):
     
@@ -195,12 +215,7 @@ def bleu(model, tokenizer, testdata, device='cuda', max_samples=100):
             )
             scores.append(score)
 
-            if i < 5:
-                print("Printing first 5 bleu scores.")
-                print(f"\nPrompt: {prompt}")
-                print(f"Correct: {reference}")
-                print(f"Generated: {generated}")
-                print(f"BLEU Score: {score:.4f}")
+            
 
     avg_bleu = sum(scores) / len(scores)
     print(f"Average bleu score on {len(scores)} samples: {avg_bleu:.4f}")
@@ -222,7 +237,7 @@ def plot_loss_curves(training_loss, validation_loss, model_name="LSTM Language M
 def train_main():
     print("Starting LSTM training main loop", flush=True)
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    dataset = TokenizedDataset("train_tokenized.pt")
+    dataset = TokenizedDataset("./modelsptfiles/train.pt")
     # Split the dataset into 80% training and 20% validation.
     train_size = int(0.8 * len(dataset))
     test_size = len(dataset) - train_size
@@ -240,18 +255,20 @@ def test_main():
 
     # Load model
     model = LSTM()
-    model.load_state_dict(torch.load("lstm_model.pt", map_location=device))
+    model.load_state_dict(torch.load("./modelsptfiles/lstm_model.pt", map_location=device))
 
     # Load tokenizer
     sp = spm.SentencePieceProcessor()
-    sp.load("bpe_tokenizer.model")
+    sp.load("./modelsptfiles/bpe_tokenizer.model")
 
     # Generate prompts
     generate_from_prompt(model, sp, "Which do you prefer? Dogs or cats?", device=device)
     generate_from_prompt(model, sp, "Messi is the goat, wouldn't you agree?", device=device)
+    generate_from_prompt(model, sp, "She was a fairy and", device=device)
+
 
     #evaluate perplexity
-    test_dataset = TokenizedDataset("test_tokenized.pt")
+    test_dataset = TokenizedDataset("./modelsptfiles/test.pt")
     test_loader = DataLoader(test_dataset, batch_size=128, shuffle=False, collate_fn=collate_fn)
     criterion = nn.CrossEntropyLoss(ignore_index=3)
     print("\nEvaluating Perplexity...")
@@ -259,7 +276,7 @@ def test_main():
 
     #bleu
     print("\nEvaluating BLEU score...")
-    bleu(model, sp, "test_final.jsonl", device=device, max_samples=100)
+    bleu(model, sp, "./data/test.jsonl", device=device, max_samples=100)
 
 
 
