@@ -15,7 +15,7 @@ First, install the Python packages you'll need:
 
 ```bash
 pip install torch sentencepiece tqdm matplotlib nltk
-```  <-- YOU FORGOT THIS CLOSING TRIPLE BACKTICK!!
+``` 
 
 ---
 
@@ -27,6 +27,7 @@ Each model has a `test_main()` function. The models are already trained — you 
 python lstm.py  
 python rnn.py  
 python transformers.py
+```
 ---
 
 
@@ -42,6 +43,7 @@ You can change the prompts by editing the test_main() function in each .py file.
 
 ```bash
 generate_from_prompt(model, tokenizer, "Your prompt", device=device)
+```
 ---
 
 
