@@ -21,7 +21,7 @@ pip install torch sentencepiece tqdm matplotlib nltk
 
 ## How to Run
 
-Each model has a `test_main()` function. The models are already trained — you just run the scripts:
+Each model has a `test_main()` function. The models are already trained. You just run the scripts:
 
 ```bash
 python lstm.py  
@@ -32,10 +32,7 @@ python transformers.py
 
 
 Each script will:
--Load the trained model
--Generate sample outputs from prompts
--Calculate Perplexity
--Calculate BLEU Score
+Load the trained model, Generate sample outputs from prompts, Calculate Perplexity, Calculate BLEU Score
 
 ## Want to Change the Prompt?
 You can change the prompts by editing the test_main() function in each .py file.
